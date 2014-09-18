@@ -1,0 +1,18 @@
+;10/24/12
+
+;Strip Zeros
+(define (zerostriphelp n h)
+  (cond
+    ((null? n)h)
+    ((= 0 (car n))(zerostriphelp (cdr n)h))
+    (else (zerostriphelp (cdr n)(append h(list(car n)))))))
+
+(define (zerostrip n)
+  (zerostriphelp n '()))
+
+;Delete
+(define (delete x n)
+  (cond
+    ((null? x)'())
+    ((= 0 n) (delete (cdr x) -1))
+    (else (cons (car x)(delete (cdr x) (- n 1))))))
